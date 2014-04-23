@@ -1,0 +1,11 @@
+%h1 All locations
+
+- @locations.each do |d|
+	Name:
+	= d.location_name
+	%br
+	Location Area:
+	= d.location_size
+	%br
+	Fire fighters Available?
+	= d.available_forest_firefighters

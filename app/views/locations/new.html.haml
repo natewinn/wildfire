@@ -1,0 +1,15 @@
+= form_for @new_location, url: "/locations" do |f|
+	= f.label :location_name
+	= f.text_field :location_name
+	%br
+	= f.label :location_size
+	= f.text_field :location_size
+	%br
+	%i On Firefighters Available?
+	= f.label "Yes"
+	= f.radio_button :available_forest_firefighters, true
+	%br
+	= f.label "No"
+	= f.radio_button :available_forest_firefighters, false
+	%br
+	= f.submit "Add"
