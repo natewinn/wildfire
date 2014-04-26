@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423110637) do
+ActiveRecord::Schema.define(version: 20140426133038) do
 
   create_table "locations", force: true do |t|
     t.string  "location_name"
-    t.string  "location_size"
     t.boolean "available_forest_firefighters", default: false
+  end
+
+  create_table "wildfires", force: true do |t|
+    t.string   "wildfire_name"
+    t.date     "wildfire_date"
+    t.string   "wildfire_cost"
+    t.string   "wildfire_cause"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

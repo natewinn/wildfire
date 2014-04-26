@@ -1,0 +1,3 @@
+= form_for @new_wildfire, url: wildfires_path do |w|
+	=render"forms", w: w
+= button_to "Back to List", wildfires_path, method: "get"

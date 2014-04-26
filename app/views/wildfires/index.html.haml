@@ -1,0 +1,25 @@
+
+/ = form_tag "/search", method: "get" do
+/ 	= label_tag(:q, "Search for:")
+/ 	= text_field_tag(:q)
+/ 	= submit_tag("Search")
+/ 	= end
+
+- @wildfires.each do |w|
+	Name:
+	= w.wildfire_name
+	%br
+	Date:
+	= w.wildfire_date
+	%br
+	Cost:
+	=w.wildfire_cost
+	%br
+	Cause:
+	=w.wildfire_cause
+	%br
+	= button_to "Update Wildfire", "/wildfires/#{w.id}/edit", method: "get"
+%br
+= button_to "Add Wildfire", new_wildfire_path, method: "get"
+
+* Add search field

@@ -1,11 +1,16 @@
-%h1 All locations
+%h1 All Locations
 
-- @locations.each do |d|
-	Name:
-	= d.location_name
+- @locations.each do |l|
+	Location:
+	= l.location_name
 	%br
-	Location Area:
-	= d.location_size
+	Fire Fighters Available?
+	= l.available_forest_firefighters
 	%br
-	Fire fighters Available?
-	= d.available_forest_firefighters
+	= button_to "Update Location", "/locations/#{l.id}/edit", method: "get"
+	%br
+
+%br
+= button_to "Add Location", new_location_path, method: "get"
+
+* Add search field

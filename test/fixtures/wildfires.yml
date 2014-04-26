@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wildfire_name: MyString
+  wildfire_date: 2014-04-25
+  wildfire_cost: MyString
+  wildfire_cause: MyString
+  location_id: 1
+
+two:
+  wildfire_name: MyString
+  wildfire_date: 2014-04-25
+  wildfire_cost: MyString
+  wildfire_cause: MyString
+  location_id: 1

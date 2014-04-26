@@ -1,0 +1,18 @@
+/ = Form to Add and Update "Wildfire" =/
+
+= w.label "Name"
+= w.text_field :wildfire_name
+%br
+= w.label "Date"
+= w.text_field :wildfire_date
+%br
+= w.label "Cost"
+= w.text_field :wildfire_cost
+%br
+= w.label "Cause"
+= w.text_field :wildfire_cause
+%br
+= w.label "Location"
+= w.select :location_id, Location.all.collect {|d| [ d.location_name, d.id ] }
+%br
+= w.submit
