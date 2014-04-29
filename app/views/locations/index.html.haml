@@ -1,16 +1,19 @@
-%h1 All Locations
+.page-header.col-md-12
+	%h1.col-md-2 Location
+	.col-md-6
+	/ = Add a New Location = /
+	=link_to "Add New Location", new_location_path, :method => :get, :class => "button btn btn-danger top-btn col-md-2"
 
-- @locations.each do |l|
-	Location:
-	= l.location_name
-	%br
-	Fire Fighters Available?
-	= l.available_forest_firefighters
-	%br
-	= button_to "Update Location", "/locations/#{l.id}/edit", method: "get"
-	%br
-
-%br
-= button_to "Add Location", new_location_path, method: "get"
-
-* Add search field
+/ = Location Table = /
+%table.table.table-hover
+	%thead
+		%tr
+			%th Location
+			%th Avaiable Firefighters
+			%th Edit Entry
+	%tbody
+		- @locations.each do |l|
+			%tr
+				%td= l.location_name
+				%td= l.available_forest_firefighters
+				%td= link_to "Update", "/locations/#{l.id}/edit", :method => :get, :class => "button btn btn-danger"

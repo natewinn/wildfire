@@ -12,8 +12,9 @@ gem 'sass-rails', '~> 4.0.2'
 # Use Haml
 gem 'haml'
 
-# Use Bootstrap for framework
-gem 'bootstrap-sass'
+# Use Bootstrap Forms for forms
+gem 'bootstrap_form'
+gem 'simple_form'
 
 # Use Flat-UI kit for Bootstrap
 gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'

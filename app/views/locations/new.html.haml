@@ -1,3 +1,21 @@
-= form_for @new_location, url: locations_path do |l|
-		= render"forms", l: l
-= button_to "Back to List", locations_path, method: "get"
+.page-header-blank
+.col-md-2
+.jumbotron.col-md-8
+	%h2 Add a new location
+	
+	/ = Create New Location Form = /
+	%p.lead Create a new location for a reported forest fire.
+	= bootstrap_form_for(@new_location, layout: :horizontal, label_col: "col-md-3", control_col: "col-md-5") do |l|
+		= l.text_field :location_name
+		= l.form_group :available_forest_firefighters, label: { text: "Firefighters"} do
+			= l.radio_button :available_forest_firefighters, true, label: "Yes", inline: true
+			= l.radio_button :available_forest_firefighters, false, label: "No", inline: true
+		%br
+
+		/ = Create Button = /
+		= l.submit "Create Record", :class => "btn btn-success col-md-3"
+		.col-md-1
+		
+		/ = Back Button = /
+		%a.btn.btn-primary.col-md-3{href: locations_path, method: "get"} Return to List
+	.col-md-1

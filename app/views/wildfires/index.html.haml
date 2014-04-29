@@ -1,25 +1,31 @@
+.page-header.col-md-12
+	%h1.col-md-2 Wildfires
 
-/ = form_tag "/search", method: "get" do
-/ 	= label_tag(:q, "Search for:")
-/ 	= text_field_tag(:q)
-/ 	= submit_tag("Search")
-/ 	= end
+	/ = Search Bar = /
+	= form_tag wildfires_path, :method => "get" do
+		= text_field_tag :search, params[:search], placeholder: "Search name & locations", :class => "form-control-header col-md-2"
+		= submit_tag "Search", :class => "button btn btn-default top-btn col-md-1"
+	.col-md-4
+	
+	/ = Add New Wildfire = /
+	=link_to "Add New Wildfire", new_wildfire_path, :method => :get, :class => "button btn btn-danger top-btn col-md-2"
 
-- @wildfires.each do |w|
-	Name:
-	= w.wildfire_name
-	%br
-	Date:
-	= w.wildfire_date
-	%br
-	Cost:
-	=w.wildfire_cost
-	%br
-	Cause:
-	=w.wildfire_cause
-	%br
-	= button_to "Update Wildfire", "/wildfires/#{w.id}/edit", method: "get"
-%br
-= button_to "Add Wildfire", new_wildfire_path, method: "get"
-
-* Add search field
+/ = Wildfire Table = /
+%table.table.table-hover
+	%thead
+		%tr
+			%th Wildfire Name
+			%th Wildfire Location
+			%th Date Started
+			%th Estimated Cost
+			%th Cause of Wildfire 
+			%th Edit Entry
+	%tbody
+		- @wildfires.each do |w|
+			%tr
+				%td= w.wildfire_name
+				%td= w.location.location_name
+				%td= w.wildfire_date.try(:strftime, '%B %d, %Y')
+				%td= w.wildfire_cost
+				%td= w.wildfire_cause
+				%td= link_to "Update", "/wildfires/#{w.id}/edit", :method => :get, :class => "button btn btn-danger"

@@ -1,4 +1,26 @@
-= form_for @wildfire, url: "/wildfires/#{@wildfire.id}" do |w|
-	= render"forms", w: w
-= button_to "Delete", "/wildfires/#{@wildfire.id}", {:action => "delete", :method => :delete}
-= button_to "Back to List", wildfires_path, method: "get"
+.page-header-blank
+.col-md-2
+.jumbotron.col-md-8
+	%h2 Wildfire Record
+	
+	/ = Wildfire Update Form = /
+	%p.lead Submit the latest wildfire information updates.
+	= bootstrap_form_for(@wildfire, layout: :horizontal, label_col: "col-md-3", control_col: "col-md-5") do |w|
+		= w.text_field :wildfire_name
+		= w.date_field :wildfire_date
+		= w.text_field :wildfire_cost
+		= w.text_field :wildfire_cause
+		= w.select :location_id, Location.all.collect {|d| [ d.location_name, d.id ] }, hide_label: true
+		%br
+		
+		/ = Submit Button = /
+		= w.submit "Update Record", method: "put", :class => "btn btn-success col-md-3"
+		.col-md-1
+		
+		/ = Delete Button = /
+		= button_to "Delete Record", "/wildfires/#{@wildfire.id}", method: "delete", :class => "btn btn-danger col-md-3"
+		.col-md-1
+		
+		/ = Back Button = /
+		%a.btn.btn-primary.col-md-3{href: wildfires_path, method: "get"} Return to List
+	.col-md-1

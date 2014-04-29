@@ -2,6 +2,10 @@ class WildfiresController < ApplicationController
 
 	def index
 		@wildfires = Wildfire.all
+		@wildfires = Wildfire.search(params[:search])
+    if @wildfires.count == 0
+      @wildfires = Wildfire.joins(:location).where('location_name = ?', "#{params[:search]}")
+    end
 	end
 
 	def new
@@ -23,7 +27,7 @@ class WildfiresController < ApplicationController
 
 	def search
 		@search = Wildfire.search(params[:search])
-		render search_wildfires_path 
+		render :index
 	end
 
 	def edit
@@ -39,9 +43,10 @@ class WildfiresController < ApplicationController
 
 	def destroy
 		@wildfire = Wildfire.find(params[:id])
-		@wildfire.delete
+		@wildfire.destroy
 			redirect_to wildfires_path
 	end
+
 
 	private
 
