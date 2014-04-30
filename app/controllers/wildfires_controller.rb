@@ -38,6 +38,8 @@ class WildfiresController < ApplicationController
 		@wildfire = Wildfire.find(params[:id])
 		if @wildfire.update_attributes(wildfire_params)
 			redirect_to wildfires_path
+		else
+      redirect_to edit_wildfire_path
 		end
 	end
 

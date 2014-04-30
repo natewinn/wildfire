@@ -29,6 +29,8 @@ class LocationsController < ApplicationController
 		@location = Location.find(params[:id])
 		if @location.update_attributes(location_params)
 			redirect_to locations_path
+		else
+		  redirect_to edit_wildfire_path
 		end
 	end
 

@@ -12,15 +12,13 @@
 		= w.text_field :wildfire_cause
 		= w.select :location_id, Location.all.collect {|d| [ d.location_name, d.id ] }, hide_label: true
 		%br
+		= w.submit "Update Record", :class => "btn btn-success col-md-3"
+	
+	.col-md-1
+	/ = Delete Button = /
+	= button_to "Delete Record", "/wildfires/#{@wildfire.id}", method: "delete", :class => "btn btn-danger col-md-3"
+	.col-md-1
 		
-		/ = Submit Button = /
-		= w.submit "Update Record", method: "put", :class => "btn btn-success col-md-3"
-		.col-md-1
-		
-		/ = Delete Button = /
-		= button_to "Delete Record", "/wildfires/#{@wildfire.id}", method: "delete", :class => "btn btn-danger col-md-3"
-		.col-md-1
-		
-		/ = Back Button = /
-		%a.btn.btn-primary.col-md-3{href: wildfires_path, method: "get"} Return to List
+	/ = Back Button = /
+	= link_to "Return to List", wildfires_path, :class => "btn btn-primary col-md-3"
 	.col-md-1

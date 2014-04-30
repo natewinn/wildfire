@@ -11,15 +11,14 @@
 			= l.radio_button :available_forest_firefighters, true, label: "Yes", inline: true
 			= l.radio_button :available_forest_firefighters, false, label: "No", inline: true
 		%br
-
-		/ = Submit Button = /
-		= l.submit "Update Record", :class => "btn btn-success col-md-3"
-		.col-md-1
+			/ = Submit Button = /
+			= l.submit "Update Record", :class => "btn btn-success col-md-3"
+			.col-md-1
 		
-		/ = Delete Button = /
-		= button_to "Delete Record", "/locations/#{@location.id}", method: "delete", :class => "btn btn-danger col-md-3"
-		.col-md-1
-		
-		/ = Back Button = /
-		%a.btn.btn-primary.col-md-3{href: locations_path, method: "get"} Return to List
+	/ = Delete Button = /
+	= button_to "Delete Record", "/locations/#{@location.id}", method: "delete", :class => "btn btn-danger col-md-3"
 	.col-md-1
+	
+	/ = Back Button = /
+	%a.btn.btn-primary.col-md-3{href: locations_path, method: "get"} Return to List
+.col-md-1
